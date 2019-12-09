@@ -10,14 +10,11 @@
 	das variáveis. Analise o que está sendo impresso no console para saber como
 	resolver o problema corretamente.
 	*/
-	var five = '5';
-	var five_converted = new Number(5);
-	five = five_converted.valueOf();
+	
+	var five = Number('5');
 	console.log( five + ' é número?', typeof five === 'number' );
 
-	var concat = 10 + 10;
-	concat_converted = new String(concat);
-	concat = concat_converted.valueOf();
+	var concat = String(10) + 10;	
 	console.log( '"' + concat + '" é uma string? E é igual a "1010"?', typeof concat === 'string' );
 
 	/*
@@ -48,6 +45,7 @@
 	- O desafio é fazer o retorno sem usar "if" ou "switch".
 	*/
 	function isOperatorValid(operator){
+		// return !!operation[operator]; // outra opção
 		return typeof operation[operator] === 'function';
 	}
 
@@ -64,10 +62,11 @@
 	os dois parâmetros da função de retorno de "calculator".
 	*/
 	function calculator(operator){
-		if(isOperatorValid(operator) === false){
+		if(!isOperatorValid(operator)){
 			console.log('operador invalido');
 			return false;
 		}
+
 		return function(a, b){
 			if(typeof a !== 'number' || typeof b !== 'number'){
 				console.log('não sou number');
@@ -134,7 +133,10 @@
 		number2 = 30;
 		console.log(showOperationMessage(operationSignal,number1,number2),sum(number1,number2));
 		// console.log(shi);
+	}else{
+		console.log(showErrorMessage(operationSignal));
 	}
+
 
 	/*
 	Repita desde o "PASSO 2" com as operações de subtração, multiplicação,
@@ -143,19 +145,35 @@
 	*/
 	operationSignal = '-';
 	var subtraction = calculator(operationSignal);
-	console.log(showOperationMessage(operationSignal,number1,number2),subtraction(number1,number2));
+	if(subtraction){
+		console.log(showOperationMessage(operationSignal,number1,number2),subtraction(number1,number2));
+	}else{
+		console.log(showErrorMessage(operationSignal));
+	}
 	
 	operationSignal = '*';
 	var multiplication = calculator(operationSignal);
-	console.log(showOperationMessage(operationSignal,number1,number2),multiplication(number1,number2));
+	if(multiplication){
+		console.log(showOperationMessage(operationSignal,number1,number2),multiplication(number1,number2));
+	}else{
+		console.log(showErrorMessage(operationSignal));
+	}
 	
 	operationSignal = '/';
 	var division = calculator(operationSignal);
-	console.log(showOperationMessage(operationSignal,number1,number2),division(number1,number2));
+	if(division){
+		console.log(showOperationMessage(operationSignal,number1,number2),division(number1,number2));
+	}else{
+		console.log(showErrorMessage(operationSignal));
+	}
 	
 	operationSignal = '%';
 	var mod = calculator(operationSignal);
-	console.log(showOperationMessage(operationSignal,number1,number2),mod(number1,number2));
+	if(mod){
+		console.log(showOperationMessage(operationSignal,number1,number2),mod(number1,number2));
+	}else{
+		console.log(showErrorMessage(operationSignal));
+	}
 
 
 
