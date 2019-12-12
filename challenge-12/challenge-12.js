@@ -31,9 +31,9 @@
     `name`: String
     `pages`: Number
     */
-    books.push({ 'name': 'Livro 01', 'pages': 10 });
-    books.push({ 'name': 'Livro 02', 'pages': 20 });
-    books.push({ 'name': 'Livro 03', 'pages': 100 });
+    books.push({ name: 'Livro 01', pages: 10 });
+    books.push({ name: 'Livro 02', pages: 20 });
+    books.push({ name: 'Livro 03', pages: 100 });
     console.log('\nLista de livros:');
 
     /*
